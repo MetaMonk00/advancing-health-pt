@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Advancing Health Physical Therapy in Mobile, AL. One-on-one physical therapy for orthopedic conditions, vertigo, TMJ, dry needling, and work injuries. Moving You Forward.">
+    <title>Advancing Health Physical Therapy - Mobile, AL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #4a5cc5;
+            --accent-cyan: #4dd4e8;
+            --dark-bg: #0a0a0a;
+            --light-gray: #f5f5f5;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            padding-top: 120px;
+        }
+
+        /* Floating Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(74, 92, 197, 0.15);
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 92%;
+            max-width: 1300px;
+            border-radius: 60px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(77, 212, 232, 0.1);
+        }
+
+        header:hover {
+            box-shadow: 0 15px 60px rgba(74, 92, 197, 0.25);
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        nav {
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 0.9rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        nav a:not(.phone-btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+
+        nav a:not(.phone-btn):hover {
+            color: var(--primary-blue);
+        }
+
+        nav a:not(.phone-btn):hover::after {
+            width: 100%;
+        }
+
+        .phone-btn {
+            background: rgba(74, 92, 197, 0.88);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 35px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(77, 212, 232, 0.2);
+            box-shadow: 0 5px 20px rgba(74, 92, 197, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-btn svg {
+            fill: white;
+            flex-shrink: 0;
+        }
+
+        .phone-btn:hover {
+            background: rgba(77, 212, 232, 0.92);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(77, 212, 232, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: rgba(74, 92, 197, 0.88);
+            color: white;
+            border: none;
+            padding: 0;
+            border-radius: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .mobile-menu:hover {
+            background: rgba(77, 212, 232, 0.92);
+        }
+
+        .mobile-menu:active {
+            transform: scale(0.95);
+        }
+
+        .hamburger {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+            left: 0;
+        }
+
+        .hamburger::before {
+            top: -6px;
+        }
+
+        .hamburger::after {
+            bottom: -6px;
+        }
+
+        .mobile-menu.active .hamburger {
+            background: transparent;
+        }
+
+        .mobile-menu.active .hamburger::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu.active .hamburger::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Styles */
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a:not(.phone-btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+        }
+
+        nav a:not(.phone-btn):hover {
+            color: var(--primary-blue);
+        }
+
+        nav a:not(.phone-btn):hover::after {
+            width: 100%;
+        }
+
+        .phone-btn {
+            background: rgba(74, 92, 197, 0.88);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 35px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(77, 212, 232, 0.2);
+            box-shadow: 0 5px 20px rgba(74, 92, 197, 0.3);
+        }
+
+        .phone-btn:hover {
+            background: rgba(77, 212, 232, 0.92);
+            transform: translateY(-3px);
+            color: var(--dark-bg);
+            box-shadow: 0 8px 30px rgba(77, 212, 232, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.60) 0%, rgba(26, 26, 46, 0.70) 100%),
+                        url('hero-bg.jpg') center/cover;
+            color: white;
+            padding: 12rem 2rem 10rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 60px 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 40%, rgba(77, 212, 232, 0.15), transparent 50%),
+                radial-gradient(circle at 75% 60%, rgba(74, 92, 197, 0.15), transparent 50%);
+            animation: pulseGlow 10s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: 900;
+            margin-bottom: 1.8rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 5px;
+            text-shadow: 0 0 60px rgba(77, 212, 232, 0.4);
+            animation: heroFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: var(--accent-cyan);
+            font-weight: 400;
+            letter-spacing: 2px;
+            animation: heroFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3.5rem;
+            opacity: 0.96;
+            line-height: 1.9;
+            animation: heroFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
+        }
+
+        .hero-tagline {
+            font-size: 1.7rem !important;
+            font-weight: 600;
+            line-height: 2.2 !important;
+            margin-bottom: 3.5rem;
+            opacity: 0.98 !important;
+            animation: heroFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: rgba(77, 212, 232, 0.92);
+            color: var(--dark-bg);
+            padding: 1.4rem 3.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.15rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(77, 212, 232, 0.5);
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(77, 212, 232, 0.3);
+            animation: heroFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(77, 212, 232, 0.7);
+            background: rgba(77, 212, 232, 1);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 9rem 2rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            color: var(--primary-blue);
+            position: relative;
+            font-weight: 800;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+            margin: 2rem auto;
+            border-radius: 10px;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(74, 92, 197, 0.25);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-image:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 35px 100px rgba(74, 92, 197, 0.35);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(74, 92, 197, 0.12), rgba(77, 212, 232, 0.12));
+            pointer-events: none;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            line-height: 2.1;
+        }
+
+        .motto {
+            background: linear-gradient(135deg, rgba(74, 92, 197, 0.92), rgba(77, 212, 232, 0.92));
+            padding: 3.5rem;
+            border-radius: 40px;
+            color: white;
+            box-shadow: 0 20px 60px rgba(74, 92, 197, 0.35);
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .motto:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(74, 92, 197, 0.45);
+        }
+
+        .motto h3 {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+        }
+
+        .motto p {
+            font-size: 1.3rem;
+            color: white;
+            line-height: 1.9;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3.5rem;
+            margin-top: 5rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 35px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(74, 92, 197, 0.08);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 25px 70px rgba(74, 92, 197, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.15);
+        }
+
+        .service-content {
+            padding: 3rem;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(74, 92, 197, 0.92), rgba(77, 212, 232, 0.92));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -55px auto 2rem;
+            box-shadow: 0 12px 35px rgba(74, 92, 197, 0.4);
+            backdrop-filter: blur(10px);
+            border: 4px solid white;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .service-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 2;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* What to Expect Section */
+        .expect {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+        }
+
+        .expect-steps {
+            display: grid;
+            gap: 3.5rem;
+            margin-top: 5rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 3.5rem;
+            align-items: start;
+            background: white;
+            padding: 3.5rem;
+            border-radius: 35px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(74, 92, 197, 0.08);
+        }
+
+        .step:hover {
+            transform: translateX(15px);
+            box-shadow: 0 20px 60px rgba(74, 92, 197, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, rgba(74, 92, 197, 0.92), rgba(77, 212, 232, 0.92));
+            color: white;
+            min-width: 90px;
+            height: 90px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            flex-shrink: 0;
+            box-shadow: 0 12px 35px rgba(74, 92, 197, 0.4);
+            backdrop-filter: blur(10px);
+            border: 4px solid white;
+            transition: all 0.4s ease;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .step-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.3rem;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            line-height: 2.1;
+            font-size: 1.15rem;
+        }
+
+        /* Team Section */
+        .team {
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(77, 212, 232, 0.05), transparent 70%);
+            pointer-events: none;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-member {
+            background: white;
+            padding: 4rem;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(74, 92, 197, 0.08);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
+            transform: scaleX(0);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .team-member:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(74, 92, 197, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        .team-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(74, 92, 197, 0.92), rgba(77, 212, 232, 0.92));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 15px 40px rgba(74, 92, 197, 0.4);
+            border: 5px solid white;
+            transition: all 0.5s ease;
+        }
+
+        .team-member:hover .team-icon {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 20px 50px rgba(77, 212, 232, 0.6);
+        }
+
+        .team-icon svg {
+            width: 50px;
+            height: 50px;
+            fill: white;
+        }
+
+        .team-member h3 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+        }
+
+        .team-member h4 {
+            color: var(--accent-cyan);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .team-member p {
+            color: var(--text-light);
+            line-height: 2.1;
+            font-size: 1.15rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+        }
+
+        .reviews-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            background: rgba(77, 212, 232, 0.1);
+            border-radius: 25px;
+            border: 2px solid rgba(77, 212, 232, 0.2);
+        }
+
+        .reviews-intro p {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3.5rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 3.5rem;
+            border-radius: 35px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(74, 92, 197, 0.08);
+            position: relative;
+        }
+
+        .review-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 70px rgba(74, 92, 197, 0.25);
+            border-color: var(--accent-cyan);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .review-text {
+            color: var(--text-light);
+            line-height: 2;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .reviewer-name {
+            color: var(--primary-blue);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 5rem;
+            color: rgba(77, 212, 232, 0.12);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 9rem 2rem;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.94) 0%, rgba(26, 26, 46, 0.96) 100%),
+                        url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053') center/cover fixed;
+            color: white;
+            border-radius: 60px 60px 0 0;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(77, 212, 232, 0.15), transparent 60%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            max-width: 1300px;
+            margin: 5rem auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 3.5rem;
+            color: var(--accent-cyan);
+            font-weight: 800;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(12px);
+            border-color: rgba(77, 212, 232, 0.4);
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            margin-top: 0.3rem;
+            min-width: 40px;
+        }
+
+        .info-text h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .info-text p {
+            color: rgba(255,255,255,0.88);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .info-text a {
+            color: rgba(255,255,255,0.88);
+            text-decoration: none;
+            transition: color 0.3s;
+            word-break: break-word;
+        }
+
+        .info-text a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            background: rgba(77, 212, 232, 0.92);
+            border-color: var(--accent-cyan);
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(77, 212, 232, 0.4);
+        }
+
+        .social-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3.5rem;
+            border-radius: 40px;
+            backdrop-filter: blur(25px);
+            border: 3px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 1.05rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 0 25px rgba(77, 212, 232, 0.4);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 160px;
+        }
+
+        .submit-btn {
+            background: rgba(77, 212, 232, 0.92);
+            color: var(--dark-bg);
+            padding: 1.4rem 3rem;
+            border: 3px solid rgba(77, 212, 232, 0.3);
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 35px rgba(77, 212, 232, 0.5);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(77, 212, 232, 0.7);
+            background: rgba(77, 212, 232, 1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 2rem;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 0.7rem;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            background: rgba(74, 92, 197, 0.88);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .mobile-menu:hover {
+            background: rgba(77, 212, 232, 0.92);
+        }
+
+        .mobile-menu:active {
+            transform: scale(0.95);
+        }
+
+        .mobile-menu span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu span::before,
+        .mobile-menu span::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu span::before {
+            top: -7px;
+        }
+
+        .mobile-menu span::after {
+            bottom: -7px;
+        }
+
+        .mobile-menu.active span {
+            background: transparent;
+        }
+
+        .mobile-menu.active span::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu.active span::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            body {
+                padding-top: 100px;
+            }
+
+            header {
+                width: 95%;
+                top: 15px;
+                border-radius: 40px;
+            }
+
+            nav {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            /* Show mobile menu button */
+            .mobile-menu {
+                display: flex;
+            }
+
+            /* Hide regular menu items except phone button */
+            nav ul#navMenu li:nth-child(1),
+            nav ul#navMenu li:nth-child(2),
+            nav ul#navMenu li:nth-child(3),
+            nav ul#navMenu li:nth-child(4),
+            nav ul#navMenu li:nth-child(5) {
+                display: none;
+            }
+
+            /* Phone button stays visible */
+            nav ul#navMenu li:nth-child(6) {
+                display: block;
+            }
+
+            nav ul#navMenu li:nth-child(6) a.phone-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            nav ul#navMenu li:nth-child(6) a.phone-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            /* When menu is active, show dropdown */
+            nav ul#navMenu.active {
+                display: flex !important;
+                position: fixed !important;
+                top: 95px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 90% !important;
+                max-width: 400px !important;
+                background: rgba(255, 255, 255, 0.92) !important;
+                backdrop-filter: blur(40px) !important;
+                -webkit-backdrop-filter: blur(40px) !important;
+                flex-direction: column !important;
+                gap: 0 !important;
+                padding: 1rem 0 !important;
+                border-radius: 30px !important;
+                box-shadow: 0 30px 80px rgba(74, 92, 197, 0.6) !important;
+                border: 3px solid rgba(77, 212, 232, 0.5) !important;
+                z-index: 1001 !important;
+            }
+
+            /* Show all items when active */
+            nav ul#navMenu.active li:nth-child(1),
+            nav ul#navMenu.active li:nth-child(2),
+            nav ul#navMenu.active li:nth-child(3),
+            nav ul#navMenu.active li:nth-child(4),
+            nav ul#navMenu.active li:nth-child(5),
+            nav ul#navMenu.active li:nth-child(6) {
+                display: block !important;
+                width: 100%;
+                border-bottom: 1px solid rgba(74, 92, 197, 0.12);
+            }
+
+            nav ul#navMenu.active li:nth-child(6) {
+                border-bottom: none;
+            }
+
+            nav ul#navMenu.active li a {
+                display: block !important;
+                padding: 1.2rem 1.5rem !important;
+                text-align: center;
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+
+            nav ul#navMenu.active li a:hover {
+                background: rgba(77, 212, 232, 0.15);
+            }
+
+            nav ul#navMenu.active li a::after {
+                display: none !important;
+            }
+
+            /* Phone button in dropdown */
+            nav ul#navMenu.active li:nth-child(6) a.phone-btn {
+                margin: 0.8rem 1.2rem !important;
+                padding: 1.2rem 1.5rem !important;
+                font-size: 1.1rem !important;
+                width: calc(100% - 2.4rem) !important;
+                border-radius: 25px !important;
+                background: rgba(74, 92, 197, 0.95) !important;
+                color: white !important;
+                box-shadow: 0 8px 25px rgba(74, 92, 197, 0.35) !important;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            nav ul#navMenu.active li:nth-child(6) a.phone-btn svg {
+                width: 18px !important;
+                height: 18px !important;
+                fill: white !important;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+                letter-spacing: 3px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.6rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.4rem !important;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 8rem 2rem 6rem;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .services-grid,
+            .team-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .step-number {
+                min-width: 80px;
+                height: 80px;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+            }
+
+            header {
+                width: 92%;
+                top: 10px;
+                border-radius: 30px;
+                padding: 0;
+            }
+
+            nav {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .logo {
+                height: 35px;
+            }
+
+            .mobile-menu {
+                padding: 0.6rem 1.2rem;
+                font-size: 1.1rem;
+            }
+
+            /* Hero Section Mobile */
+            .hero {
+                padding: 6rem 1.5rem 5rem;
+                border-radius: 0 0 40px 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+                margin-bottom: 1.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.15rem !important;
+                line-height: 1.8 !important;
+                margin-bottom: 2.5rem;
+            }
+
+            .cta-btn {
+                padding: 1.2rem 2.5rem;
+                font-size: 1rem;
+            }
+
+            /* Section Spacing */
+            .section {
+                padding: 5rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 3rem;
+            }
+
+            .section-title::after {
+                width: 80px;
+                height: 4px;
+                margin: 1.5rem auto;
+            }
+
+            /* About Section Mobile */
+            .about-content {
+                gap: 2.5rem;
+            }
+
+            .about-image img {
+                height: 350px;
+            }
+
+            .about-text h3 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-text p {
+                font-size: 1.05rem;
+                line-height: 1.8;
+                margin-bottom: 1.5rem;
+            }
+
+            .motto {
+                padding: 2.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .motto h3 {
+                font-size: 2rem;
+            }
+
+            .motto p {
+                font-size: 1.1rem;
+            }
+
+            /* Services Mobile */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin-top: 3rem;
+            }
+
+            .service-card {
+                border-radius: 25px;
+            }
+
+            .service-image {
+                height: 200px;
+            }
+
+            .service-content {
+                padding: 2rem;
+            }
+
+            .service-icon {
+                width: 70px;
+                height: 70px;
+                margin: -45px auto 1.5rem;
+            }
+
+            .service-icon svg {
+                width: 35px;
+                height: 35px;
+            }
+
+            .service-card h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .service-card p {
+                font-size: 1rem;
+            }
+
+            /* What to Expect Mobile */
+            .expect-steps {
+                gap: 2.5rem;
+                margin-top: 3rem;
+            }
+
+            .step {
+                padding: 2.5rem;
+                border-radius: 25px;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .step-number {
+                min-width: 70px;
+                height: 70px;
+                font-size: 2rem;
+                border-radius: 20px;
+            }
+
+            .step-content h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .step-content p {
+                font-size: 1.05rem;
+                line-height: 1.8;
+            }
+
+            /* Team Mobile */
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin-top: 3rem;
+            }
+
+            .team-member {
+                padding: 2.5rem;
+                border-radius: 30px;
+            }
+
+            .team-icon {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 1.5rem;
+            }
+
+            .team-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .team-member h3 {
+                font-size: 1.8rem;
+            }
+
+            .team-member h4 {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .team-member p {
+                font-size: 1.05rem;
+                line-height: 1.8;
+            }
+
+            /* Reviews Mobile */
+            .reviews-intro {
+                margin: 0 auto 2.5rem;
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .reviews-intro p {
+                font-size: 1.05rem;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin-top: 2rem;
+            }
+
+            .review-card {
+                padding: 2.5rem;
+                border-radius: 25px;
+            }
+
+            .stars {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .review-text {
+                font-size: 1.05rem;
+                line-height: 1.8;
+                margin-bottom: 1.5rem;
+            }
+
+            .reviewer-name {
+                font-size: 1.1rem;
+            }
+
+            .quote-icon {
+                font-size: 3.5rem;
+                top: 20px;
+                right: 25px;
+            }
+
+            /* Contact Mobile */
+            .contact {
+                padding: 5rem 1.5rem;
+                border-radius: 40px 40px 0 0;
+            }
+
+            .contact-grid {
+                gap: 3rem;
+                margin-top: 3rem;
+            }
+
+            .contact-info h3 {
+                font-size: 2rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .info-item {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+                border-radius: 20px;
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .info-icon {
+                font-size: 1.8rem;
+                margin-top: 0;
+            }
+
+            .info-text h4 {
+                font-size: 1.2rem;
+            }
+
+            .info-text p {
+                font-size: 1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .social-btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .contact-form {
+                padding: 2.5rem;
+                border-radius: 30px;
+            }
+
+            .form-group {
+                margin-bottom: 2rem;
+            }
+
+            .form-group label {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 1rem 1.2rem;
+                font-size: 1rem;
+                border-radius: 15px;
+            }
+
+            .form-group textarea {
+                min-height: 140px;
+            }
+
+            .submit-btn {
+                padding: 1.2rem 2.5rem;
+                font-size: 1rem;
+                border-radius: 50px;
+            }
+
+            /* Footer Mobile */
+            footer {
+                padding: 2.5rem 1.5rem;
+            }
+
+            footer p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 85px;
+            }
+
+            header {
+                top: 8px;
+                width: 94%;
+            }
+
+            nav {
+                padding: 0.7rem 1.2rem;
+            }
+
+            .logo {
+                height: 32px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem !important;
+            }
+
+            .hero {
+                padding: 5rem 1.2rem 4rem;
+            }
+
+            .section {
+                padding: 4rem 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-btn {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .service-image {
+                height: 180px;
+            }
+
+            .about-image img {
+                height: 280px;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .info-item {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Header -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="ah_logo.png" alt="Advancing Health Physical Therapy Logo" class="logo">
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Who We Are</a></li>
+                <li><a href="#reviews">What Others Say</a></li>
+                <li><a href="#expect">What To Expect</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="tel:2513010574" class="phone-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                        <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
+                    </svg>
+                    (251) 301-0574
+                </a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Menu Backdrop Blur -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>YOU ARE A HERO</h1>
+            <p class="hero-subtitle">Every journey has a hero</p>
+            <p class="hero-tagline">Your journey. Your strength. Your comeback.<br>Advancing Health Physical Therapy, Moving You Forward.</p>
+            <a href="#contact" class="cta-btn">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Who We Are</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="office-interior.jpg" alt="Advancing Health Physical Therapy Waiting Room">
+                </div>
+                <div>
+                    <div class="about-text">
+                        <h3>Your Partner in Recovery and Wellness</h3>
+                        <p>Physical therapy provided in an experienced, one-on-one setting for most problems and conditions. Let us help you awaken the hero inside of you.</p>
+                        <p>At Advancing Health Physical Therapy, we only employ the highest quality staff to work with you one-on-one. From the moment we first connect with you to the time you leave our care, we promise to treat you in a professional and courteous manner.</p>
+                        <p>We understand that starting your journey can be scary, but we will take care of you. Our goal is to help you reach your goals so you can unlock the hidden hero inside.</p>
+                    </div>
+                    <div class="motto">
+                        <h3>Moving You Forward</h3>
+                        <p>Our motto reflects our commitment to helping you progress on your journey to better health and wellness.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070" alt="Physical Therapy Rehabilitation" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                            </svg>
+                        </div>
+                        <h3>Orthopedic Conditions</h3>
+                        <p>Comprehensive treatment for all orthopedic problems affecting bones, joints, muscles, ligaments, and tendons.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=2069" alt="Balance and Vestibular Therapy" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3>Vertigo & Balance</h3>
+                        <p>Specialized treatment for vertigo and balance problems using evidence-based techniques.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=2070" alt="Manual Therapy Treatment" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            </svg>
+                        </div>
+                        <h3>TMJ Dysfunction</h3>
+                        <p>Expert treatment for temporomandibular joint dysfunction to reduce pain and restore function.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="dry-needling.jpg" alt="Dry Needling Treatment" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                            </svg>
+                        </div>
+                        <h3>Dry Needling</h3>
+                        <p>Advanced dry needling techniques to relieve muscle tension, reduce pain, and improve mobility.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070" alt="Work Injury Rehabilitation" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                            </svg>
+                        </div>
+                        <h3>Work Injuries</h3>
+                        <p>Comprehensive treatment for work-related injuries to help you return to work safely and efficiently.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070" alt="One on One Physical Therapy" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                            </svg>
+                        </div>
+                        <h3>One-on-One Care</h3>
+                        <p>Personalized, individual attention during every session dedicated entirely to you and your goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect Section -->
+    <section id="expect" class="section expect">
+        <div class="container">
+            <h2 class="section-title">What to Expect</h2>
+            <div class="expect-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Initial Evaluation</h3>
+                        <p>Your first visit consists mainly of a comprehensive evaluation where we address your problems and concerns. We will also explain your plan and goals for your physical therapy. This visit usually lasts a little longer than an hour to make sure we can check everything out.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Personalized Treatment Plan</h3>
+                        <p>Based on your evaluation, we develop a customized treatment plan tailored to your specific goals. Your plan may include manual therapy, therapeutic exercises, education, and home programs.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>One-on-One Sessions</h3>
+                        <p>Each session is dedicated entirely to you. Our therapists provide hands-on treatment, guide you through exercises, and adjust your plan as you progress toward your goals.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Unlock Your Hero</h3>
+                        <p>As you progress, we celebrate your victories and continue to challenge you. Our goal is to help you unlock the hidden hero inside and return to your activities stronger and more confident than ever.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3>Austin Trippe, PT, DPT</h3>
+                    <h4>Owner & Physical Therapist</h4>
+                    <p>Austin graduated from the University of South Alabama in 2007 with a doctorate degree in physical therapy. He genuinely loves people and will work hard to help you. He has worked with all kinds of patients and conditions and is ready to help you unlock your potential.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3>Michelle</h3>
+                    <h4>Therapy Team Member</h4>
+                    <p>Michelle is a fantastic member of our therapy team. From the first time you talk to her on the phone to the last time you leave our office, you can expect a smiling face and exceptional care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section reviews">
+        <div class="container">
+            <h2 class="section-title">What Our Patients Say</h2>
+            <div class="reviews-intro">
+                <p>⭐ 5.0 Rating - Based on 24+ Facebook Reviews</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">Everyone working at Advancing Health PT are not only skilled professionals but compassionate and caring people as well!</p>
+                    <div class="reviewer-name">— Darby Malone</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">5/2/2024</p>
+                </div>
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">I have had 6 weeks of therapy at Advancing Health Physical Therapy and it has been an amazing experience!</p>
+                    <div class="reviewer-name">— Rebecca R Miller</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">4/12/2024</p>
+                </div>
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">I recently received treatment for lower back, hip, and leg injuries. The care and attention I received was exceptional!</p>
+                    <div class="reviewer-name">— David S. Williams</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">12/2/2023</p>
+                </div>
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">Austin Trippe and his staff helped me get back on my feet after a serious injury. Highly professional and caring!</p>
+                    <div class="reviewer-name">— Cindy Gallagher</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">8/29/2024</p>
+                </div>
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">Great personal service!! Staff is very friendly! All staff is very knowledgeable and professional!</p>
+                    <div class="reviewer-name">— Jessica West</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">7/26/2024</p>
+                </div>
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">Wonderful place to rehab with kind & caring people. They truly care about helping you achieve your goals!</p>
+                    <div class="reviewer-name">— Kathy Lott</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">6/14/2024</p>
+                </div>
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">Austin is outstanding and focuses on individualized patient care. The entire team is professional and dedicated!</p>
+                    <div class="reviewer-name">— Mason Williams</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">11/20/2025</p>
+                </div>
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">I can't say enough good things about this place! From the front desk to the therapists, everyone is amazing!</p>
+                    <div class="reviewer-name">— Brooke Van Veghel</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">6/26/2025</p>
+                </div>
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">Everyone at Advancing Health is great. These folks truly care about their patients and it shows in everything they do!</p>
+                    <div class="reviewer-name">— Ryan Reed</div>
+                    <p style="color: #999; font-size: 0.95rem; margin-top: 0.5rem;">4/2/2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Phone</h4>
+                            <p><a href="tel:2513010574">(251) 301-0574</a></p>
+                            <p style="font-size: 0.95rem; margin-top: 0.5rem;">Office: (251) 209-1157</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:physicaltherapy@advancinghealthpt.com">physicaltherapy@<wbr>advancinghealthpt.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Location</h4>
+                            <p>7921 Tanner Williams Rd, Suite J<br>Mobile, AL 36608</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Hours</h4>
+                            <p>Monday - Friday: By Appointment<br>Closed Major Holidays</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Connect With Us</h4>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/advancinghealthpt" target="_blank" class="social-btn" aria-label="Facebook">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://www.instagram.com/advancinghealthpt" target="_blank" class="social-btn" aria-label="Instagram">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://www.linkedin.com/in/austin-trippe-68487b20a/" target="_blank" class="social-btn" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your needs or questions..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Advancing Health Physical Therapy. All Rights Reserved.</p>
+        <p>Moving You Forward - Empowering Heroes on Their Journey to Better Health</p>
+    </footer>
+
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        
+        console.log('Menu elements:', {mobileMenuBtn, navMenu, menuBackdrop});
+        
+        if (mobileMenuBtn && navMenu && menuBackdrop) {
+            // Click handler for menu button
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Menu button clicked!');
+                
+                const isActive = navMenu.classList.contains('active');
+                console.log('Is active:', isActive);
+                
+                if (isActive) {
+                    navMenu.classList.remove('active');
+                    this.classList.remove('active');
+                    menuBackdrop.classList.remove('active');
+                    console.log('Menu closed');
+                } else {
+                    navMenu.classList.add('active');
+                    this.classList.add('active');
+                    menuBackdrop.classList.add('active');
+                    console.log('Menu opened');
+                }
+            });
+
+            // Close menu when clicking backdrop
+            menuBackdrop.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                menuBackdrop.classList.remove('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('nav') && !e.target.closest('.menu-backdrop')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    menuBackdrop.classList.remove('active');
+                }
+            });
+
+            // Close menu when clicking a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    menuBackdrop.classList.remove('active');
+                });
+            });
+        } else {
+            console.error('Menu elements not found!');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you soon to begin your hero\'s journey.');
+                this.reset();
+            });
+        }
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 12px 50px rgba(74, 92, 197, 0.2)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 10px 40px rgba(74, 92, 197, 0.15)';
+            }
+        });
+    </script>
+</body>
+</html>
